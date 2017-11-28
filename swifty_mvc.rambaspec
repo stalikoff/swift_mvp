@@ -1,0 +1,26 @@
+# Template information section
+name: "swifty_mvc"
+summary: "Swift MVC module template with UIViewController playing as a View."
+author: "Max Petrenko"
+version: "0.1.0"
+license: "MIT"
+
+# The declarations for code files
+
+code_files:
+# View layer
+- {name: View/ViewInput.swift,  path: Code/View/view_input.swift.liquid}
+- {name: View/ViewOutput.swift, path: Code/View/view_output.swift.liquid}
+- {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid}
+
+# Controller layer
+- {name: Controller.swift, path: Code/controller.swift.liquid}
+
+# The declarations for test files
+test_files:
+
+# View tests
+- {name: View/ViewTests.swift, path: Tests/View/view_tests.swift.liquid}
+
+# Controller tests
+- {name: ControllerTests.swift, path: Tests/controller_tests.swift.liquid}
