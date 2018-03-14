@@ -1,0 +1,33 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Swinject
+import SwinjectStoryboard
+
+class {{ module_info.name }}Assembly: Assembly {
+	func assemble(container: Container) {
+		// register navigator
+		container.register({{ module_info.name }}Navigator.self) { (_, view: {{ module_info.name }}ViewInput) in
+			return {{ module_info.name }}Navigator(sourceViewController: view as? {{ module_info.name }}ViewController)
+		}
+		
+		// register controller
+		container.register({{ module_info.name }}ViewOutput.self) { (_, view: {{ module_info.name }}ViewInput) in
+			return {{ module_info.name }}Controller(view: view)
+		}
+		
+		// view
+		container.storyboardInitCompleted({{ module_info.name }}ViewController.self) { (r, vc: {{ module_info.name }}ViewInput) in
+			if let controller = r.resolve({{ module_info.name }}ViewOutput.self, argument: vc) as? {{ module_info.name }}Controller {
+				controller.navigator = r.resolve({{ module_info.name }}Navigator.self, argument: vc)
+				vc.set(controller: controller)
+			}
+			vc.notificationing = r.resolve(NotificationService.self)
+		}
+	}
+}
