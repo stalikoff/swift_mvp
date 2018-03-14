@@ -9,8 +9,12 @@
 import UIKit
 
 public class {{ module_info.name }}ViewController: UIViewController, {{module_info.name}}ViewInput {
-
   private var controller: {{ module_info.name }}ViewOutput?
+  public var notificationing: NotificationService?
+
+  public func set(controller: {{ module_info.name }}ViewOutput) {
+  	self.controller = controller
+  }
 
   // MARK: Life cycle
   public override func viewDidLoad() {
