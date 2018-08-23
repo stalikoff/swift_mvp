@@ -27,7 +27,7 @@ class {{ module_info.name }}Assembly: Assembly {
 				controller.navigator = r.resolve({{ module_info.name }}Navigator.self, argument: vc)
 				vc.set(controller: controller)
 			}
-			vc.notificationing = r.resolve(NotificationService.self)
+			vc.notifying = r.resolve(NotificationService.self)
 		}
 	}
 }
