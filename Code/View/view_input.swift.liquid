@@ -8,5 +8,5 @@
 
 public protocol {{ module_info.name }}ViewInput: class {
 	var notifying: NotificationService? { get set }
-	func set(controller: {{ module_info.name }}ViewOutput)
+	func set(presenter: {{ module_info.name }}ViewOutput)
 }

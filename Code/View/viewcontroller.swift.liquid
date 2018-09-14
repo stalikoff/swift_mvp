@@ -9,11 +9,11 @@
 import UIKit
 
 public class {{ module_info.name }}ViewController: UIViewController, {{module_info.name}}ViewInput {
-  private var controller: {{ module_info.name }}ViewOutput?
+  private var presenter: {{ module_info.name }}ViewOutput?
   public var notifying: NotificationService?
 
-  public func set(controller: {{ module_info.name }}ViewOutput) {
-  	self.controller = controller
+  public func set(presenter: {{ module_info.name }}ViewOutput) {
+  	self.presenter = presenter
   }
 
   // MARK: Life cycle
