@@ -11,7 +11,7 @@ code_files:
 # View layer
 - {name: View/ViewInput.swift,  path: Code/View/view_input.swift.liquid}
 - {name: View/ViewOutput.swift, path: Code/View/view_output.swift.liquid}
-- {name: View/ViewController.swift, path: Code/View/viewpresenter.swift.liquid}
+- {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid}
 
 # Presenter layer
 - {name: Presenter.swift, path: Code/presenter.swift.liquid}
@@ -25,4 +25,4 @@ test_files:
 - {name: View/ViewTests.swift, path: Tests/View/view_tests.swift.liquid}
 
 # Presenter tests
-- {name: PresenterTests.swift, path: Tests/prersenter_tests.swift.liquid}
+- {name: PresenterTests.swift, path: Tests/presenter_tests.swift.liquid}

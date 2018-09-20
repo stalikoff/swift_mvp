@@ -7,7 +7,6 @@
 //
 
 import Swinject
-import SwinjectStoryboard
 
 class {{ module_info.name }}Assembly: Assembly {
 	func assemble(container: Container) {
@@ -22,12 +21,12 @@ class {{ module_info.name }}Assembly: Assembly {
 		}
 		
 		// view
-		container.storyboardInitCompleted({{ module_info.name }}ViewController.self) { (r, vc: {{ module_info.name }}ViewInput) in
-			if let presenter = r.resolve({{ module_info.name }}ViewOutput.self, argument: vc) as? {{ module_info.name }}Presenter {
-				presenter.navigator = r.resolve({{ module_info.name }}Navigator.self, argument: vc)
+		container.storyboardInitCompleted({{ module_info.name }}ViewController.self) { (resolver, vc: {{ module_info.name }}ViewInput) in
+			if let presenter = resolver.resolve({{ module_info.name }}ViewOutput.self, argument: vc) as? {{ module_info.name }}Presenter {
+				presenter.navigator = resolver.resolve({{ module_info.name }}Navigator.self, argument: vc)
 				vc.set(presenter: presenter)
 			}
-			vc.notifying = r.resolve(NotificationService.self)
+			vc.notifying = resolver.resolve(NotificationService.self)
 		}
 	}
 }
