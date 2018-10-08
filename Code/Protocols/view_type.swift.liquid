@@ -6,7 +6,7 @@
 //  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
 //
 
-public protocol {{ module_info.name }}ViewInput: class {
+public protocol {{ module_info.name }}ViewType: class {
 	var notifying: NotificationService? { get set }
-	func set(presenter: {{ module_info.name }}ViewOutput)
+	func set(presenter: {{ module_info.name }}PresenterType)
 }

@@ -10,23 +10,28 @@ import Swinject
 
 class {{ module_info.name }}Assembly: Assembly {
 	func assemble(container: Container) {
+		// register view
+		container.register({{ module_info.name}}ViewType.self) { _ in 
+			{{ module_info.name }}ViewController()
+		}.initCompleted { (resolver: Resolver, view: {{ module_info.name }}ViewType) in
+			// set dependencies
+			if let presenter = resolver.resolve({{ module_info.name }}PresenterType.self) as? {{ module_info.name }}Presenter {
+				presenter.navigator = resolver.resolve({{ module_info.name }}Navigator.self, argument: view)
+				presenter.attach(view: view)
+				view.set(presenter: presenter)
+			}
+			view.notifying = resolver.resolve(NotificationService.self)
+		}
+
+
 		// register navigator
-		container.register({{ module_info.name }}Navigator.self) { (_, view: {{ module_info.name }}ViewInput) in
-			return {{ module_info.name }}Navigator(sourceViewController: view as? {{ module_info.name }}ViewController)
+		container.register({{ module_info.name }}Navigator.self) { (_, view: {{ module_info.name }}ViewType) in
+			{{ module_info.name }}Navigator(sourceViewController: view as? {{ module_info.name }}ViewController)
 		}
 		
 		// register presenter
-		container.register({{ module_info.name }}ViewOutput.self) { (_, view: {{ module_info.name }}ViewInput) in
-			return {{ module_info.name }}Presenter(view: view)
-		}
-		
-		// view
-		container.storyboardInitCompleted({{ module_info.name }}ViewController.self) { (resolver, vc: {{ module_info.name }}ViewInput) in
-			if let presenter = resolver.resolve({{ module_info.name }}ViewOutput.self, argument: vc) as? {{ module_info.name }}Presenter {
-				presenter.navigator = resolver.resolve({{ module_info.name }}Navigator.self, argument: vc)
-				vc.set(presenter: presenter)
-			}
-			vc.notifying = resolver.resolve(NotificationService.self)
+		container.register({{ module_info.name }}PresenterType.self) { _ in
+			{{ module_info.name }}Presenter()
 		}
 	}
 }

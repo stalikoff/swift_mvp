@@ -8,9 +8,11 @@ license: "MIT"
 # The declarations for code files
 
 code_files:
+# Protocols
+- {name: Protocols/ViewType.swift, path: Code/Protocols/view_type.swift.liquid}
+- {name: Protocols/PresenterType.swift, path: Code/Protocols/presenter_type.swift.liquid}
+
 # View layer
-- {name: View/ViewInput.swift,  path: Code/View/view_input.swift.liquid}
-- {name: View/ViewOutput.swift, path: Code/View/view_output.swift.liquid}
 - {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid}
 
 # Presenter layer
@@ -20,9 +22,6 @@ code_files:
 
 # The declarations for test files
 test_files:
-
-# View tests
-- {name: View/ViewTests.swift, path: Tests/View/view_tests.swift.liquid}
 
 # Presenter tests
 - {name: PresenterTests.swift, path: Tests/presenter_tests.swift.liquid}
