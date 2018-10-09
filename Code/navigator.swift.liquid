@@ -5,10 +5,12 @@
 //  Created by {{ developer.name }} on {{ date }}.
 //  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
 //
-
 import UIKit
+import Swinject
 
 class {{ module_info.name }}Navigator: Navigator {
+	var resolver: Resolver!
+
 	enum Destination {
 		case someDestination
 	}
@@ -23,7 +25,7 @@ class {{ module_info.name }}Navigator: Navigator {
   // MARK: - Navigator
   func navigate(to destination: {{ module_info.name }}Navigator.Destination) {
 		if let destinationViewController = makeViewController(for: destination) {
-			if let navVC = sourceViewController as? UINavigationController {
+			if let navVC = sourceViewController?.navgationController {
 				navVC.pushViewController(destinationViewController, animated: true)
 			}
 		}
@@ -35,6 +37,9 @@ class {{ module_info.name }}Navigator: Navigator {
 		case .someDestination:
 			let storyboard = UIStoryboard(name: "SomeStoryboard", bundle: Bundle.main)
 			return storyboard.instantiateInitialViewController()
+
+			// or
+			// return resolver.resolve(SomeViewType.self) as? SomeViewController
 		}
 	}
 }
