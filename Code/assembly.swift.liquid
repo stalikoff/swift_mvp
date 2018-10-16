@@ -23,7 +23,6 @@ class {{ module_info.name }}Assembly: Assembly {
 			view.notifying = resolver.resolve(NotificationService.self)
 		}
 
-
 		// register navigator
 		container.register({{ module_info.name }}Navigator.self) { (_, view: {{ module_info.name }}ViewType) in
 			{{ module_info.name }}Navigator(sourceViewController: view as? {{ module_info.name }}ViewController)
