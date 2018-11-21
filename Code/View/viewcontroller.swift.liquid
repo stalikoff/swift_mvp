@@ -20,5 +20,6 @@ public class {{ module_info.name }}ViewController: UIViewController, {{module_in
   // MARK: Life cycle
   public override func viewDidLoad() {
   	super.viewDidLoad()
+    presenter?.viewIsReady()
   }
 }
