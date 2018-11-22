@@ -16,7 +16,10 @@ class {{ module_info.name }}Assembly: Assembly {
 		}.initCompleted { (resolver: Resolver, view: {{ module_info.name }}ViewType) in
 			// set dependencies
 			if let presenter = resolver.resolve({{ module_info.name }}PresenterType.self) as? {{ module_info.name }}Presenter {
-				presenter.navigator = resolver.resolve({{ module_info.name }}Navigator.self, argument: view)
+				if let navigator = resolver.resolve({{ module_info.name }}Navigator.self, argument: view) {
+				navigator.resolver = resolver
+				presenter.navigator = navigator
+				}
 				presenter.attach(view: view)
 				view.set(presenter: presenter)
 			}
