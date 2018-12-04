@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class {{ module_info.name }}ViewController: UIViewController, {{module_info.name}}ViewType {
+public class {{ module_info.name }}ViewController: BaseViewController {
   private var presenter: {{ module_info.name }}PresenterType?
   public var notifying: NotificationService?
 
@@ -22,4 +22,8 @@ public class {{ module_info.name }}ViewController: UIViewController, {{module_in
   	super.viewDidLoad()
     presenter?.viewIsReady()
   }
+}
+
+extension {{ module_info.name }}ViewController: {{module_info.name}}ViewType {
+
 }

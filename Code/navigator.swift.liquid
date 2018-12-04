@@ -15,7 +15,7 @@ class {{ module_info.name }}Navigator: Navigator {
 		case someDestination
 	}
   
-  private weak var sourceViewController: UIViewController?
+  internal weak var sourceViewController: UIViewController?
 
   // MARK: - Initializer
   init(sourceViewController: UIViewController?) {
@@ -32,7 +32,7 @@ class {{ module_info.name }}Navigator: Navigator {
 	}
 	
 	// MARK: - Private
-	private func makeViewController(for destination: Destination) -> UIViewController? {
+	internal func makeViewController(for destination: Destination) -> UIViewController? {
 		switch destination {
 		case .someDestination:
 			let storyboard = UIStoryboard(name: "SomeStoryboard", bundle: Bundle.main)
