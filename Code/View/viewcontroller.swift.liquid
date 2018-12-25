@@ -12,12 +12,10 @@ public class {{ module_info.name }}ViewController: BaseViewController {
   private var presenter: {{ module_info.name }}PresenterType?
   public var notifying: NotificationService?
 
-  // MARK: - View Type
   public func set(presenter: {{ module_info.name }}PresenterType) {
   	self.presenter = presenter
   }
 
-  // MARK: Life cycle
   public override func viewDidLoad() {
   	super.viewDidLoad()
     presenter?.viewIsReady()
