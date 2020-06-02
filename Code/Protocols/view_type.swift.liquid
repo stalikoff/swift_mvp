@@ -7,6 +7,5 @@
 //
 
 public protocol {{ module_info.name }}ViewType: class, BaseViewProtocol {
-	var notifying: NotificationService? { get set }
 	func set(presenter: {{ module_info.name }}PresenterType)
 }

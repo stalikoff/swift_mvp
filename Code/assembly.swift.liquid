@@ -21,7 +21,6 @@ class {{ module_info.name }}Assembly: Assembly {
 				presenter.attach(view: view)
 				view.set(presenter: presenter)
 			}
-			view.notifying = resolver.resolve(NotificationService.self)
 		}
 
 		container.register({{ module_info.name }}Navigator.self) { (_, view: {{ module_info.name }}ViewType) in
